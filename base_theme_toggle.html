@@ -1,0 +1,32 @@
+<-- base.html !-->
+<-- snippet toggle theme changes in bootstrap !-->
+<script>
+// init theme
+function initTheme() {
+    // set theme defined in localStorage if there is one, or fallback to auto mode
+    const currentTheme = localStorage.getItem("theme");
+    currentTheme ? document.documentElement.setAttribute('data-bs-theme',currentTheme) : document.documentElement.setAttribute('data-bs-theme','light');
+};
+initTheme();
+</script>
+<script>
+// DARK / LIGHT THEME TOGGLE
+// enable action to toggler
+'use strict';
+{
+    window.addEventListener('load', function(e) {
+        // change color (modified from Django's admin template)
+        document.getElementById('btnLightSwitch').addEventListener('click',()=>{
+            if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
+                document.documentElement.setAttribute('data-bs-theme','light');
+                localStorage.setItem("theme", 'light');
+            }
+            else {
+                document.documentElement.setAttribute('data-bs-theme','dark');
+                localStorage.setItem("theme", 'dark');
+            }
+        });
+
+    });
+}
+</script>
